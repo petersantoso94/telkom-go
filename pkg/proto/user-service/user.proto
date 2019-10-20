@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package user;
+option go_package = "pb";
+
+
+// The user service definition.
+service user {
+  rpc CreateUser (CreateUserRequest) returns (EmptyResponse) {}
+  rpc GetUser (GetUserRequest) returns (GetUserResponse) {}
+  rpc UpdateUser (UpdateUserRequest) returns (EmptyResponse) {}
+  rpc DeleteUser (DeleteRequest) returns (EmptyResponse) {}
+}
+
+message User {
+    string email = 1;
+    string password = 2;
+    string position = 3;
+    string lock_ip = 4;
+}
+
+message GetUserResponse{
+    repeated User user = 1;
+}
+
+message CreateUserRequest{
+    repeated User user = 1;
+}
+
+message UpdateUserRequest{
+    repeated User user = 2;
+}
+
+message GetUserRequest {
+    string email = 1;
+}
+
+message DeleteRequest {
+    string email = 1;
+}
+
+
+message EmptyResponse {
+}
+
+  
